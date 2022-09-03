@@ -49,8 +49,8 @@ cmake_ninja_workdir = C$:/Users/Khaled/CLionProjects/exercises/cmake-build-debug
 
 build cmake_object_order_depends_target_exercises: phony || CMakeFiles/exercises.dir
 
-build CMakeFiles/exercises.dir/main.cpp.obj: CXX_COMPILER__exercises_Debug C$:/Users/Khaled/CLionProjects/exercises/main.cpp || cmake_object_order_depends_target_exercises
-  DEP_FILE = CMakeFiles\exercises.dir\main.cpp.obj.d
+build CMakeFiles/exercises.dir/1DArrays.cpp.obj: CXX_COMPILER__exercises_Debug C$:/Users/Khaled/CLionProjects/exercises/1DArrays.cpp || cmake_object_order_depends_target_exercises
+  DEP_FILE = CMakeFiles\exercises.dir\1DArrays.cpp.obj.d
   FLAGS = -g -std=gnu++14
   OBJECT_DIR = CMakeFiles\exercises.dir
   OBJECT_FILE_DIR = CMakeFiles\exercises.dir
@@ -63,7 +63,7 @@ build CMakeFiles/exercises.dir/main.cpp.obj: CXX_COMPILER__exercises_Debug C$:/U
 #############################################
 # Link the executable exercises.exe
 
-build exercises.exe: CXX_EXECUTABLE_LINKER__exercises_Debug CMakeFiles/exercises.dir/main.cpp.obj
+build exercises.exe: CXX_EXECUTABLE_LINKER__exercises_Debug CMakeFiles/exercises.dir/1DArrays.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\exercises.dir
