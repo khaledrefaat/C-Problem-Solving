@@ -361,41 +361,40 @@ using namespace std;
 // // Problem Number #6: Print sorted list of numbers. Read an integer N <= 900, followed by reading N integers(0 <= value <= 500)
 // // input : 13 1 5 5 2 5 7 2 3 3 3 5 2 7 => output: 1 2 2 2 3 3 3 5 5 5 7 7
 
-int main() {
-//    // Finally My Solution ^_^
-    int n;
-    cin >> n;
-    const int MAX = 500 + 1;
-    int frequency[MAX] = {0};
-
-    for (int i = 0; i < n; i++) {
-        int value;
-        cin >> value;
-        frequency[value]++;
-    }
-
-//    // The only difference between my code and doctor mostafa's code
-/////////////////////////////////////////////////
-
-// // this is mine
+//int main() {
+////    // Finally My Solution ^_^
+//    int n;
+//    cin >> n;
+//    const int MAX = 500 + 1;
+//    int frequency[MAX] = {0};
+//
+//    for (int i = 0; i < n; i++) {
+//        int value;
+//        cin >> value;
+//        frequency[value]++;
+//    }
+//
+////    // The only difference between my code and doctor mostafa's code
+///////////////////////////////////////////////////
+//
+//// // this is mine
+////    for (int i = 0; i < MAX; i++) {
+////        if (frequency[i] > 0) {
+////            while (frequency[i]--) {
+////                cout << i << " ";
+////            }
+////        }
+////    }
+//
+//// // This is doctor mostafa's
 //    for (int i = 0; i < MAX; i++) {
-//        if (frequency[i] > 0) {
-//            while (frequency[i]--) {
-//                cout << i << " ";
-//            }
+//        while (frequency[i]) {
+//            frequency[i]--;
+//            cout << i << " ";
 //        }
 //    }
-
-// // This is doctor mostafa's
-    for (int i = 0; i < MAX; i++) {
-        while (frequency[i]) {
-            frequency[i]--;
-            cout << i << " ";
-        }
-    }
-
-    return 0;
-}
-
+//
+//    return 0;
+//}
 
 
