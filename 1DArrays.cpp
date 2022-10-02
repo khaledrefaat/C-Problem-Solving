@@ -398,3 +398,227 @@ using namespace std;
 //}
 
 
+// //////////////////////////////////////////////////////////////////////////////////////
+// //    Hard Challenges
+// //////////////////////////////////////////////////////////////////////////////////////
+
+
+
+// /////////////////////////////////////////////////////////////////////////
+// // Problem Number #1: Recaman's sequence. Read an integer N <= 900, followed by reading N integers(0 <= value <= 500)
+// i didn't understand this problem, so I skipped it
+
+// /////////////////////////////////////////////////////////////////////////
+// // Problem Number #2: Fixed sliding window
+// // Read integers K and N, (where K <= N). then read N < 200 integers
+// // Find sub-array(consecutive numbers) of K elements that has maximum sum
+//int main() {
+
+//  // This was my solution with nested loops
+//    int K, N;
+//    cin >> K >> N;
+//    int tmp = K, arr[N], Max = 0;
+//
+//    for (int i = 0; i < N; i++) cin >> arr[i];
+//    for (int i = 0; i < N; i++) {
+//        int acc = 0;
+//        for (int j = K - tmp; j < K; j++) {
+//            acc += arr[j];
+//            cout << arr[j] << " ";
+//        }
+//        cout << "=> sum = " << acc << endl;
+//        K++;
+//        if (Max < acc) Max = acc;
+//        if (K > N) break;
+//    }
+//
+//    cout << "Max sum = " << Max;
+
+// /////////////////////////////
+// // This is doctor mostafa's solution
+
+//    const int N = 200;
+//    int k, n, arr[N];
+//    cin >> k >> n;
+//
+//    for (int i = 0; i < n; i++) cin >> arr[i];
+//
+//    int max_sum = 0;
+//    for (int i = 0; i < k; i++) max_sum += arr[i];
+//
+//    int sum = max_sum, min_index = 0;
+//    for (int i = k; i < n; i++) {
+//        sum = sum - arr[i - k] + arr[i];
+//
+//        if (max_sum < sum) {
+//            max_sum = sum;
+//            min_index = i - k - 1;
+//        }
+//    }
+//
+//    cout << min_index << " " << min_index + k - 1 << " " << max_sum;
+//
+//    return 0;
+//}
+
+
+// /////////////////////////////////////////////////////////////////////////
+// // Problem Number #3: Count increasing sub arrays.
+// //  Read an integer N, then read N integers < 200
+// // output: Count how many sub arrays are increasing in the array
+// // if input is 1 2 3 4
+// // 1 => [1] [2] [3] [4]
+// // 2 => [1 ,2] [2, 3], [3, 4]
+// // 3 => [1 , 2, 3] [2, 3, 4]
+
+//int main() {
+//        // Here is how doctor mostafa solved the problem with nested loops solution
+// /////////////////////////////////////////////////////////////////////////
+//    int arr[199];
+//    int n;
+//    cin >> n;
+//    for (int i = 0; i < n; i++) cin >> arr[i];
+//
+//    int result = 0;
+//
+//    for (int i = 0; i < n; i++) {
+//        result++;
+//
+//        for (int j = i + 1; j < n; j++) {
+//            if (arr[j] >= arr[j - 1]) result++;
+//            else break;
+//        }
+//    }
+//    cout << result << endl;
+//}
+
+
+// /////////////////////////////////////////////////////////////////////////
+// // Problem Number #4: Josephus problem
+// // Read integers N(<200) and K (<= 1000000). Code for small K first
+// // Find the game winner for the following game:
+// There is a group of N people in circle numbered 1, 2, ... N. Someone is the master of the game. He starts from Person #1. Count K. Then Remove this person from the circle. He Keeps Doing till only 1 person remains
+
+//int main() {
+//    int n, k;
+//
+//    cin >> n >> k;
+//
+//    // Let's mark them in 0-based array
+//    bool is_removed[199] = { 0 };
+//
+//    int last_pos = 0;	// The first position to simulate from it
+//
+//    // We will just simulate the running.
+//    // Start from last killed position
+//    // Count K times, but skip these killed positions already
+//    for (int t = 0; t < n; ++t) {
+//        int remaining_alive = n - t;
+//
+//        int current_k = k;
+//        // Ignore this if/else condition for now. See bottom of code. It is for handling very large K
+//        if (k % remaining_alive == 0)
+//            current_k = remaining_alive;
+//        else
+//            current_k = k % remaining_alive;
+//
+//
+//        int step = 0;
+//        int last_person = -1;
+//        while (step < current_k) {
+//            if (is_removed[last_pos] == 0)	// not removed. consider it and increment the step
+//                last_person = last_pos, step++;
+//            last_pos = (last_pos + 1) % n;	// loop back to the array if needed
+//        }
+//        is_removed[last_person] = 1;
+//        cout << last_person + 1 << "\n";
+//    }
+//    /*
+//     * About the if else. We want to handle when k is so big
+//     * Let's say remaining_alive = 4 and k = 6
+//     * 		This is the same as if k = 2   (6%4 = 2)
+//     *
+//     * 	Similarly
+//     * 	Let's say remaining_alive = 4 and k = 10
+//     * 		This is the same as if k = 2   (10%4 = 2)
+//     *
+//     * 	This is the same as the useless cycles in the clock
+//     * 		4 is same as any 4 + k*12
+//     *
+//     * 	So in general, we don't need to iterate k times
+//     * 		we only need: k % remaining_alive
+//     *
+//     * 	But we need 1 special case handling to k % remaining_alive == 0
+//     * 		In this case we iterate remaining_alive steps
+//     */
+//
+//    return 0;
+//}
+
+
+// /////////////////////////////////////////////////////////////////////////
+// // Problem Number #5: Longest Sub array
+// // Read integer N(< 1000) Then N read numbers each is either 0 or 1.
+// // Find the longest sub array with number of zeros = numbers of ones
+// // inputs: 7 1 0 0 0 1 1 1 => 6
+// // input: 19 1 0 0 0 0 0 1 0 1 1 0 1 0 0 0 0 0 0 1 => 8
+
+//int main() {
+//
+//    int n;
+//    int a[1000];	// actually 999
+//    int difference[1000*2+1];	// maximum 2000 values with shift 1000
+//
+//    // mark the difference as never appeared
+//    for (int i = 0; i < 2001; ++i)
+//        difference[i] = 999999;
+//
+//    cin >> n;
+//
+//    for (int i = 0; i < n; i++)
+//        cin >> a[i];
+//
+//    int maxSubarrayLength1 = 0;
+//    int maxSubarrayStartIndex1 = -1;
+//    int maxSubarrayEndIndex1 = -1;
+//
+//    int added = 0;
+//
+//    difference[0+1000] = -1;	// difference 0 appears before the array (-1)
+//
+//    for (int i = 0; i < n; i++)
+//    {
+//        if(a[i] == 1)
+//            added += 1;
+//        else
+//            added -= 1;
+//
+//        int shift = added + 1000;	// shift to make sure positive
+//
+//        if(difference[shift] == 999999)
+//            difference[shift] = i;	// first time for such accumulated difference to appear
+//        else {
+//            int subarrayLength = i - difference[shift];
+//
+//            if (subarrayLength > maxSubarrayLength1) {
+//                maxSubarrayLength1 = subarrayLength;
+//                maxSubarrayStartIndex1 = difference[shift]+1;
+//                maxSubarrayEndIndex1 = i;
+//            }
+//        }
+//    }
+//
+//    if (maxSubarrayLength1 == 0)
+//        cout << "NOT FOUND" << endl;
+//    else {
+//        cout << maxSubarrayLength1 << endl;
+//        for (int i = maxSubarrayStartIndex1; i <= maxSubarrayEndIndex1; i++)
+//            cout << a[i] << " ";
+//        cout << endl;
+//    }
+//    // By adding 0 as -1 values, each group of equal ones and zeros
+//    // is actually sub-array of sum zero
+//
+//
+//    return 0;
+//}
