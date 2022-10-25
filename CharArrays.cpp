@@ -203,3 +203,72 @@ using namespace std;
 //
 //    return 0;
 //}
+
+
+int main() {
+    int const MAX = 10000;
+    string name[MAX], gender[MAX];
+    int salary[MAX], age[MAX], employee_number = 0;
+
+    while (true) {
+        int choice;
+        cin >> choice;
+
+        if (choice < 1 || choice > 4) {
+            cout << "Wrong Choice Please Select A Choice Between 1 & 4";
+            cin >> choice;
+        }
+
+        if (choice == 1) {
+            cout << "Please enter Employee Name, Age, Salary, Gender";
+            cin >> name[employee_number] >> age[employee_number] >> salary[employee_number] >> gender[employee_number];
+            employee_number++;
+        }
+
+        if (choice == 2) {
+            for (int i = 0; i <= employee_number; i++) {
+                if (age[i] != 0) {
+                    cout << "Name: " << name[i] << " Age: " << age[i] << " Salary: " << salary[i] << " Gender: "
+                         << gender[i] << endl;
+                }
+            }
+        }
+
+        if (choice == 3) {
+            int start_age, end_age;
+            cout << "Please Enter Start Age: ";
+            cin >> start_age;
+            cout << "Please Enter End Age: ";
+            cin >> end_age;
+
+            for (int i = 0; i <= employee_number; i++) {
+                if (start_age <= age[i] && age[i] <= end_age) {
+                    age[i] = 0;
+                    salary[i] = 0;
+                }
+            }
+        }
+
+        if (choice == 4) {
+            string employee_name;
+            int new_salary;
+            cout << "Please enter the name of the employee that you want to update his salary";
+            cin >> employee_name;
+
+            bool found_employee = false;
+            for (int i = 0; i <= employee_number; i++) {
+                if (employee_name == name[i]) {
+                    cout << "Please enter the new salary";
+                    cin >> new_salary;
+
+                    salary[i] = new_salary;
+                    found_employee = true;
+                    cout << "Name: " << name[i] << " Age: " << age[i] << " Salary: " << salary[i] << " Gender: "
+                         << gender[i];
+                }
+            }
+            if (!found_employee) cout << "Employee Not Found!";
+        }
+    }
+    return 0;
+}
