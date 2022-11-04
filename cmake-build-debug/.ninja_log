@@ -1,9 +1,17 @@
 # ninja log v5
 4	369	6832402118820797	CMakeFiles/exercises.dir/main.cpp.obj	68c4c8425d554f45
 9	400	6883360973096035	build.ninja	b1699ebce9972122
-398	507	6882759619735179	exercises.exe	b15e5781cb9f3fee
-3	511	6864237131181241	CMakeFiles/exercises.dir/1DArrays.cpp.obj	6527f4b7b206c64e
-3	397	6882759618715736	CMakeFiles/exercises.dir/CharArrays.cpp.obj	fff14d74a4f4d71d
-4	492	6883717364529783	CMakeFiles/exercises.dir/MultidimensionalArrays.cpp.obj	4ef71800f16a1d9
-7	497	6883717364569756	CMakeFiles/exercises.dir/CharArrays.cpp.obj	fff14d74a4f4d71d
-3	421	6883718194824290	CMakeFiles/exercises.dir/CharArrays.cpp.obj	fff14d74a4f4d71d
+457	669	6892513906271573	exercises.exe	8eb8bf4f79b5c51d
+3	355	6884363396118876	CMakeFiles/exercises.dir/1DArrays.cpp.obj	6527f4b7b206c64e
+3	355	6884363266783164	CMakeFiles/exercises.dir/CharArrays.cpp.obj	fff14d74a4f4d71d
+4	456	6892513904722459	CMakeFiles/exercises.dir/MultidimensionalArrays.cpp.obj	4ef71800f16a1d9
+3	456	6892514555321306	CMakeFiles/exercises.dir/MultidimensionalArrays.cpp.obj	4ef71800f16a1d9
+456	550	6892514556201488	exercises.exe	8eb8bf4f79b5c51d
+5	616	6892514908128035	CMakeFiles/exercises.dir/MultidimensionalArrays.cpp.obj	4ef71800f16a1d9
+616	758	6892514909367317	exercises.exe	8eb8bf4f79b5c51d
+5	501	6892516742854121	CMakeFiles/exercises.dir/MultidimensionalArrays.cpp.obj	4ef71800f16a1d9
+502	627	6892516744113387	exercises.exe	8eb8bf4f79b5c51d
+5	478	6892517213226841	CMakeFiles/exercises.dir/MultidimensionalArrays.cpp.obj	4ef71800f16a1d9
+479	605	6892517214416159	exercises.exe	8eb8bf4f79b5c51d
+6	533	6892518229985638	CMakeFiles/exercises.dir/MultidimensionalArrays.cpp.obj	4ef71800f16a1d9
+534	634	6892518230905115	exercises.exe	8eb8bf4f79b5c51d
