@@ -145,3 +145,181 @@ using namespace std;
 //
 //    return 0;
 //}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// // Medium to hard challenges
+
+
+
+// // I didn't understand this problem and what should I do, so I skip it
+/////////////////////////////////////////////////////
+// // Problem #1: How many primes
+// // Read 2 integers N & M, then read matrix NxM.
+// // Then read integer Q, for queries. For each query read 4 integers: i j r c
+// //                                                                   . represents a grid (sub matrix): top left (i, j) for(#rows, #cols)
+// // For each query, print how many prime numbers in the requested grid.
+// // each query should be answered using nested loops maximum not more
+// // in the future: with smart pre computation it can be done without loops
+// // it's called image integral in computer vision field.
+//int main() {
+//    int N, M;
+//    cin >> N >> M;
+//    int arr[N][M];
+//    for (int i = 0; i < N; i++) for (int j = 0; j < M; j++) cin >> arr[i][j];
+//
+//    int Q;
+//    cin >> Q;
+//
+//    for (int count = 0; count < Q; count++) {
+//        int i, j, r, c;
+//        cin >> i >> j >> r >> c;
+//    }
+//
+//
+//    return 0;
+//}
+
+/////////////////////////////////////////////////////
+// // Problem #2: Find mountains
+// // Read integer N & M, then read matrix NxM. print all positions that are mountain. Position is mountain if value > 8 neighbours values
+// // Code smartly
+// // Input : 3 3
+// //        8 6 1
+// //        3 2 9
+// //        1 6 4
+// // Output: 0 0
+////          1 2
+
+// // This was Doctor mostafa's solution
+//int main() {
+//    int N, M;
+//    cin >> N >> M;
+//    int matrix[N][M];
+//    for (int i = 0; i < N; i++) for (int j = 0; j < M; j++) cin >> matrix[i][j];
+//
+//    int di[8] = {1, 0, -1, 0, -1, 1, -1, 1};
+//    int dj[8] = {0, 1, 0, -1, -1, 1, 1, -1};
+//
+//    for (int i = 0; i < N; i++)
+//        for (int j = 0; j < M; j++) {
+//            bool isValidMountain = true;
+//            for (int d = 0; d < 8; d++) {
+//                int ni = di[d] + i;
+//                int nj = dj[d] + j;
+//
+//                if (ni < 0 || ni >= N || nj < 0 || nj >= M) continue;
+//
+//                if (matrix[ni][nj] >= matrix[i][j]) {
+//                    isValidMountain = false;
+//                    break;
+//                }
+//            }
+//
+//            if (isValidMountain) cout << i << " " << j << endl;
+//        }
+//
+//
+//    return 0;
+//}
+
+
+/////////////////////////////////////////////////////
+// // Problem #3: Active Robot
+// // Read integer n, m represents a matrix. a robot start at cell (0, 0)
+// // Read integer K, then K commands each command is 2 values
+// //   Direction from 1 to 4: up right down left
+// //   Steps: a number to number steps to take in the direction. steps [1, 100000000]
+// //   if the robot hits the wall during the move, it circulates in the matrix
+// // For every command, print where the robot is
+// // Inputs:
+// //           3 4     4    2 1     3 2       42       13
+// // 21 means to right 1 step - 3 2 means down 2 steps
+
+// // This is my solution
+//int main() {
+//    int N, M;
+//    cin >> N >> M;
+
+//    int K;
+//    cin >> K;
+//
+//    int row = 0, column = 0;
+//    for (int i = 0; i < K; i++) {
+//        int direction, steps;
+//        cin >> direction >> steps;
+//
+////        if (direction == 1) {
+////            row = row - steps;
+////            if (row < 0) row = N - 1;
+////        }
+////        if (direction == 2) column = (column + steps) % M;
+////        if (direction == 3) row = (row + steps) % N;
+////        if (direction == 4) {
+////            column = column - steps;
+////            if (column < 0) column = M - 1;
+////        }
+//        switch (direction) {
+//            case 1:
+//                row = row - steps;
+//                if (row < 0) row = N - 1;
+//                break;
+//            case 2:
+//                column = (column + steps) % M;
+//                break;
+//            case 3:
+//                row = (row + steps) % N;
+//                break;
+//            case 4:
+//                column = column - steps;
+//                if (column < 0) column = M - 1;
+//                break;
+//            default:
+//                break;
+//        }
+//        cout << "(" << row << "," << column << ")" << endl;
+//    }
+//    return 0;
+//}
+// // Doctor Mostafa's solution Very smart way as always
+//int main() {
+//    int n, m, k, r = 0, c = 0;
+//    cin >> n >> m >> k;
+//
+////    // Doctor mostafa here gives 0 to the value of right and left, because rows(rd) don't have right and left
+////    //  The same for column(cd) it has no up and down so first and third position have 0
+//    int rd[4] = {-1, 0, 1, 0};
+//    int cd[4] = {0, 1, 0, -1};
+//
+//    while (k--) {
+//        int dir, steps;
+//        cin >> dir >> steps;
+//        --dir;
+//
+//        r = (r + rd[dir] * steps) % n;
+//        c = (c + cd[dir] * steps) % m;
+//
+//
+//        if (r < 0) r += n;
+//        if (c < 0) c += m;
+//
+//        cout << "(" << r << "," << c << ")" << endl;
+//    }
+//}
+
+
+// I didn't understand this problem so i skipped it for now
+/////////////////////////////////////////////////////
+// // Problem #4: Flatten 3D Array
+// // read 3 numbers: depth, rows, columns, cols the dimensions of 3d array
+// // then read integer either 1 (convert 3D to 1D) or 2 (1D to 3D)
+// // if input was 1, then read 3 integers d, r, c then convert to position in 1D array
+// // if input was 2, then read 1 integer position, then convert to 3D array position
+// // to generalize if we have e.g. 6D array
+// // input  => outputs
+// // 3 4 5       1       100 => 20
+// // 3 4 5       2       20 => 1 0 0
+// // 3 4 5       1       1 1 1 => 26
+// // 3 4 5       1       2 3 2 => 57
+// // 3 4 5       1       2 0 0 => 40
+// // 3 4 5       2       59 => 2 3 4
