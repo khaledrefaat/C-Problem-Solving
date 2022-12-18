@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -180,4 +181,156 @@ using namespace std;
 //    leftMax(arr, 6);
 //
 //    for (int i = 0; i < 6; i++) cout << arr[i] << " ";
+//}
+
+
+// //////////////////////////////////////////////////////////////
+// // Medium To Hard Challenges
+
+// /////////////////////////////
+// // Problem #9: Right Max
+
+//void rightMax(int arr[], int len, int startPosition = 0) {
+//    if (startPosition + 1 == len) return;
+//
+//    rightMax(arr, len, startPosition + 1);
+//
+//    if (arr[startPosition] < arr[startPosition + 1]) arr[startPosition] = arr[startPosition + 1];
+//}
+//
+
+// // Doctor Mostafa's solution
+//void rightMaxV1(int arr[], int len, int start = 0) {
+//    if (start == len - 1) return;
+//
+//    rightMaxV1(arr, len, start + 1);
+//    arr[start] = max(arr[start], arr[start + 1]);
+//}
+//
+//// without start index
+//void rightMaxV2(int arr[], int len) {
+//    if (len == 1) return;
+//
+////    // it's as if we shifted the first element of the array so we have now to compare the new 0 and 1 index of the array
+//    rightMaxV1(arr + 1, len - 1);
+//    arr[0] = max(arr[0], arr[1]);
+//}
+//
+//int main() {
+//    int arr[] = {1, 3, 5, 7, 4, 2};
+//
+////    rightMaxV1(arr, 6);
+//    rightMaxV2(arr, 6);
+//
+//    for (int i = 0; i < 6; i++) cout << arr[i] << " ";
+//}
+
+// /////////////////////////////
+// // Problem #10: Suffix Sum
+
+//int suffixSum(int arr[], int len, int count) {
+//    if (count == 1) return arr[len - count];
+//
+//    return arr[len - count] + suffixSum(arr, len, count - 1);
+//}
+//
+//int main() {
+//    int arr[] = {1, 3, 4, 6, 7};
+//
+//    cout << suffixSum(arr, 5, 3);
+//}
+
+// /////////////////////////////
+// // Problem #11: Prefix Sum
+
+//int prefixSum(int arr[], int count) {
+//    if (count == 0) return 0;
+//
+//    return arr[count - 1] + prefixSum(arr, count - 1);
+//}
+//
+//int main() {
+//    int arr[] = {1, 3, 4, 6, 7};
+//
+//    cout << prefixSum(arr, 3);
+//}
+
+// /////////////////////////////
+// // Problem #12: Is Palindrome
+
+
+//bool isPalindrome(int arr[], int len, int start = 0) {
+//    if (start >= floor((len - 1) / 2)) return true;
+//
+//    if (arr[start] != arr[(len - 1) - start]) return false;
+//
+//    isPalindrome(arr, len, start + 1);
+//}
+
+// // The following next 2 functions are doctor mostafa's solution
+//bool isPalindromeV1(int arr[], int end, int start = 0) {
+//    if (start >= end) return true;
+//
+//    if (arr[start] != arr[end]) return false;
+//
+//    isPalindromeV1(arr, end - 1, start + 1);
+//}
+//
+//bool isPalindromeV2(int arr[], int end) {
+//    if (end <= 0) return true;
+//
+//    if (arr[0] != arr[end]) return false;
+//
+//    isPalindromeV2(arr + 1, end - 2);
+//}
+
+
+//int main() {
+//    int arr[] = {1, 3, 4, 6, 7};
+//    int arr2[] = {1, 2, 4, 2, 1};
+//
+////    cout << isPalindromeV1(arr, 4) << " " << isPalindromeV1(arr2, 4);
+//    cout << isPalindromeV2(arr, 4) << " " << isPalindromeV2(arr2, 4);
+//}
+
+// /////////////////////////////
+// // Problem #13: Is Prefix
+
+//bool isPrefix(string str1, string str2, int index = 0) {
+//    if (index == str2.size()) return true;
+//
+//    if (str1[index] != str2[index]) return false;
+//
+//    return isPrefix(str1, str2, index + 1);
+//}
+//
+//int main() {
+//    string str1 = "abcdefg", str2 = "abc", str3 = "asd";
+//    cout << isPrefix(str1, str2) << " " << isSuffix(str1, str3);
+//}
+
+// /////////////////////////////
+// // Problem #17: Fibonacci
+
+
+// // My Solution
+//int fibonacci(int n, int arr[], int counter = 2) {
+//    if (n == 1) return 1;
+//    if (n == 2) return 2;
+//
+//    if (counter == n + 1) return arr[n];
+//
+//    arr[counter] = arr[counter - 1] + arr[counter - 2];
+//    return fibonacci(n, arr, counter + 1);
+//}
+//
+//int fibonacci(int n) {
+//    if (n <= 1) return 1;
+//
+//    return fibonacci(n - 1) + fibonacci(n - 2);
+//}
+//
+//int main() {
+//    int arr[7] = {1, 1};
+//    cout << fibonacci(6, arr);
 //}
