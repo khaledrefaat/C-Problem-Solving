@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 
 using namespace std;
 
@@ -8,13 +7,13 @@ int specializations[100];
 int status[100];
 int index = 0;
 
-bool checkAvailableSpot(const int &specialization) {
-    int counter = 0;
-    for (int i = 0; i < 100; i++) {
-        if (specializations[i] == specialization) counter++;
-    }
+bool checkAvailableSpot(int specialization, int index = 0, int counter = 0) {
+    if (index >= 100) return true;
+    if (counter >= 5) return false;
 
-    return counter < 5;
+    if (specialization == specializations[index]) counter++;
+
+    checkAvailableSpot(specialization, index + 1, counter);
 }
 
 void addNewPatient() {
@@ -31,6 +30,24 @@ void addNewPatient() {
     } else cout << "Sorry we can't add more patients to this specialization.";
 }
 
+void printPatients(int counter, int count) {
+    cout << "There are " << counter << " patients in specialization " << count << "\n";
+
+    for (int i = 0; i < counter; i++)
+        if (status[i] == 0)
+            cout << specializations[i] << " " << names[i] << " urgent" << endl;
+
+    for (int i = 0; i < counter; i++)
+        if (status[i] == 1)
+            cout << specializations[i] << " " << names[i] << " regular" << endl;
+
+}
+
+bool checkSpecialization(const int idx, const int specializationsChecked[]) {
+    for (int i = 0; i < 20; i++) if (specializations[idx] == specializationsChecked[i]) return false;
+    return true;
+}
+
 void printAllPatients() {
     int indexes[5 + 1];
     int counter = 0;
@@ -39,10 +56,7 @@ void printAllPatients() {
 
     for (int i = 0; i < 100; i++) {
         if (specializations[i] == -1) continue;
-
-        bool isPrinted = false;
-        for (int j = 0; j < 20; j++) if (specializations[i] == specializationsChecked[j]) isPrinted = true;
-        if (isPrinted) continue;
+        if (!checkSpecialization(i, specializationsChecked)) continue;
 
         for (int j = 0; j < 100; j++) {
             if (specializations[i] == specializations[j]) {
@@ -50,23 +64,10 @@ void printAllPatients() {
                 counter++;
             }
         }
-
         specializationsChecked[specializedCheckedIndex] = specializations[i];
         specializedCheckedIndex++;
-        cout << "There are " << counter << " patients in specialization " << specializations[indexes[0]]
-             << endl;
 
-        for (int i = 0; i < counter; i++) {
-            int patientIndex = indexes[i];
-            if (status[patientIndex] == 0)
-                cout << specializations[patientIndex] << " " << names[patientIndex] << " urgent" << endl;
-        }
-
-        for (int i = 0; i < counter; i++) {
-            int patientIndex = indexes[i];
-            if (status[patientIndex] == 1)
-                cout << specializations[patientIndex] << " " << names[patientIndex] << " regular" << endl;
-        }
+        printPatients(counter, specializations[indexes[0]]);
         counter = 0;
     }
 
