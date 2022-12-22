@@ -3,4 +3,4 @@ project(exercises)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(exercises 1DArrays.cpp CharArrays.cpp MultidimensionalArrays.cpp Functions.cpp RecursiveFunctions.cpp HospitalSystemProject.cpp)
+add_executable(exercises 1DArrays.cpp CharArrays.cpp MultidimensionalArrays.cpp Functions.cpp RecursiveFunctions.cpp HospitalSystemProject.cpp Structures.cpp)
